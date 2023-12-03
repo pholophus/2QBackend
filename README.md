@@ -15,12 +15,9 @@ TwoQCompany-FullStackApp
 
 ## Project Overview
 
-CRUD Company using Laravel & AJAX
+CRUD Company API using Laravel 
 
 ## Architecture
-
-Describe the high-level architecture of your project. Include information about how the different components interact and any design patterns you've employed. Mention any significant packages or design decisions.
-
 ```plaintext
 |-- app
 |   |-- Console
@@ -31,7 +28,6 @@ Describe the high-level architecture of your project. Include information about 
 |   |   |-- ...
 |   |-- Models
 |   |-- Providers
-|   |-- Repositories
 |-- config
 |-- database
 |-- public
@@ -40,76 +36,11 @@ Describe the high-level architecture of your project. Include information about 
 |-- ...
 ```
 
- Custom Repositories
-
-A custom directory named "Repositories" has been added to the application structure. This directory is intended to house the majority of the business logic, encapsulating the application's specific requirements. The purpose is to prevent cluttering controllers with extensive business logic, allowing controllers to focus on handling requests and responses.
-
-How to Use Repositories
-
-
-Controllers should follow a pattern where they primarily handle incoming requests, extract relevant data, and then delegate the business logic to the appropriate repository. This separation helps maintain a clean and organized codebase.
-
-Example of how a controller might interact with a repository:
-
-
-```php
-use App\Repositories\YourRepository;
-
-class YourController extends Controller
-{
-    protected $yourRepository;
-
-    public function __construct(YourRepository $yourRepository)
-    {
-        $this->yourRepository = $yourRepository;
-    }
-
-    public function yourControllerMethod(Request $request)
-    {
-        // Extract data from the request
-        $requestData = $request->only(['key1', 'key2']);
-
-        // Delegate the business logic to the repository
-        $result = $this->yourRepository->performBusinessLogic($requestData);
-
-        // Process the result and return a response
-        // ...
-
-        return response()->json($result);
-    }
-}
-```
-
-Adding Business Logic
-
-Repositories within the "Repositories" directory are expected to contain the business logic. Each repository should have methods dedicated to specific tasks, ensuring a clear separation of concerns.
-
-```php
-
-namespace App\Repositories;
-
-class YourRepository
-{
-    public function performBusinessLogic(array $data)
-    {
-        // Your business logic goes here
-        // ...
-
-        return $result;
-    }
-}
-```
-
 ## Database
 
 ### Database Schema
 
 ```plaintext
-users
-  - id
-  - name
-  - email
-  ...
 
 company
   - id
@@ -141,8 +72,9 @@ php artisan migrate
 php artisan serve
 ```
 
-## Mising Features
+## Missing/ Not Yet Implemented Features
 ```plaintext
 - authentication
 - user
+- repositories folder 
 ```
