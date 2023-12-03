@@ -1,6 +1,6 @@
 # Project Name
 
-TwoQCompany-FullStackApp
+TwoQCompany-Backend
 
 ## Table of Contents
 
